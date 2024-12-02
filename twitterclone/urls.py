@@ -17,14 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
-
-        
+from django.conf import settings
+from tweets import views
 
 urlpatterns = [
    path('admin/', admin.site.urls),
    path('', include('accounts.urls')),
-   path('tweets/', include('tweets.urls')), # add the urlpatterns declared from the tweets app
-   
-]   
+   path('tweets/', include('tweets.urls')),    
+]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

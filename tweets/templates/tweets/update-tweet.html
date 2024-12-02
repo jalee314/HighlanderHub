@@ -1,0 +1,29 @@
+{% extends 'tweets/base.html' %}
+{% load static %}
+
+{% block title %}
+    Twitter Clone | Update Tweet
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        {% if user.profile.id == tweet_id %}
+            <h2>Edit this tweet</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <textarea
+                        required
+                        name="tweet_msg"
+                        class="form-control"
+                        rows="3"
+                    >{{ tweet_msg }}</textarea>
+                </div>
+                <br />
+                <button type="submit" class="btn btn-primary">Update Tweet</button>
+            </form>
+        {% else %}
+            <h2>Error 404: Page not found</h2>
+        {% endif %}
+    </div>
+{% endblock %}

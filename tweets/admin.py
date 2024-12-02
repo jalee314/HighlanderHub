@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import * # imports all models in tweets app
+from .models import *   
 
 admin.site.register(Tweet)
